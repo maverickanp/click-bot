@@ -1,16 +1,38 @@
 {
-  "name": "clickbot",
+  "name": "clean-node-api",
   "version": "1.0.0",
-  "description": "a clickbot to perform clicks on a especific page",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:staged": "jest --passWithNoTests",
+    "dev": "nodemon src/server.js",
+    "test:run": "npm run test:mocha 'src/test/**/*.test.ts'",
+    "dev-service-run": "run() { ts-node -r tsconfig-paths/register src/services/${1} -s; }; run"
   },
-  "keywords": [
-    "puppeteer",
-    "bot",
-    "clickbot"
-  ],
-  "author": "Artur Pedrosa",
-  "license": "ISC"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.1",
+    "@types/puppeteer": "^2.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "eslint": "6",
+    "eslint-config-standard-with-typescript": "^15.0.1",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4",
+    "eslint-plugin-standard": "4",
+    "git-commit-msg-linter": "^2.4.2",
+    "husky": "^4.2.5",
+    "jest": "^25.4.0",
+    "lint-staged": "^10.1.7",
+    "nodemon": "^2.0.3",
+    "puppeteer": "^3.0.2",
+    "ts-jest": "^25.4.0",
+    "ts-node": "^8.9.1",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "tsconfig-paths": "^3.9.0"
+  }
 }
