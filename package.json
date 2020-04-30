@@ -1,0 +1,16 @@
+{
+  "name": "clickbot",
+  "version": "1.0.0",
+  "description": "a clickbot to perform clicks on a especific page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "puppeteer",
+    "bot",
+    "clickbot"
+  ],
+  "author": "Artur Pedrosa",
+  "license": "ISC"
+}
