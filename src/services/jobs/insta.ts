@@ -6,8 +6,9 @@ config();
 
 const USERNAME: string = process.env.INSTAGRAM_USERNAME;
 const PASSWORD: string = process.env.PASSWORD;
-const LOGIN_URL: string = "https://instagram.com/accounts/login";
-const TARGET_ENDPOINT: string = "https://www.instagram.com/p/CAklE0nhVdR/";
+const LOGIN_URL: string = process.env.LOGIN_URL || "https://instagram.com/accounts/login";
+const TARGET_ENDPOINT: string = process.env.TARGET_ENDPOINT || "https://www.instagram.com/p/CAklE0nhVdR/";
+const USERNAME_TO_COMMENT: string = process.env.USERNAME_TO_COMMENT || "arturnunespedrosa";
 const WAIT_TIME: number = 60000;
 const COMMENT_COUNT: number = 1000000;
 const WAIT_TIME_STAY: number = 7000;
@@ -23,10 +24,8 @@ export const start = async (): Promise<void> => {
 
     await page.goto(LOGIN_URL);
     await page.waitFor(() => document.querySelectorAll('input').length);
-
     await page.type('[name=username]', USERNAME);
     await page.type('[name=password]', PASSWORD);
-
     await page.$eval('[type=submit]', (elem: any) => elem.click());
     await page.waitFor(WAIT_TIME_STAY);
     await page.goto(TARGET_ENDPOINT);
@@ -37,8 +36,7 @@ export const start = async (): Promise<void> => {
       console.log("click " + index);
       //const itens = await scrapeItens(page);
       //console.table(itens);
-      await page.type('textarea', "@arturnunespedrosa");
-      //await page.type('textarea', "@maverickanp");
+      await page.type('textarea', USERNAME_TO_COMMENT);
       await page.$eval('[type=submit]', (elem: any) => elem.click());
       await page.waitFor(between((55000), WAIT_TIME));
       console.timeEnd("between");
@@ -62,7 +60,6 @@ export const start = async (): Promise<void> => {
 if (process.env.NODE_ENV !== 'test') {
   start();
 }
-
 
 export const between = (min: number, max: number) => {
   return Math.floor(
