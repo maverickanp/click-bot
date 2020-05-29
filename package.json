@@ -7,7 +7,7 @@
     "test:staged": "jest --passWithNoTests",
     "dev": "nodemon src/server.js",
     "test:run": "npm run test:mocha 'src/test/**/*.test.ts'",
-    "dev-service-run": "run() { ts-node -r tsconfig-paths/register src/services/${1} -s; }; run"
+    "dev-service-run": "run() { ts-node -r tsconfig-paths/register src/services/jobs${1} -s; }; run"
   },
   "license": "MIT",
   "devDependencies": {
@@ -33,6 +33,8 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
+    "puppeteer-proxy": "^2.1.0",
     "tsconfig-paths": "^3.9.0"
   }
 }
