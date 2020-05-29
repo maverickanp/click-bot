@@ -1,8 +1,8 @@
 import puppeteer from 'puppeteer';
 
-const TARGET_ENDPOINT: string = "https://app.sli.do/event/8khqvdwq/live/questions";
-const CLICK_SELECTOR: string = "#app > div:nth-child(2) > div > div > div > div > div > div.app__content__body > sda-live > div > sda-questions > sda-question-list > div > div:nth-child(2) > div > div > div.question-item__header.mb1 > div.question-item__action-zone > div.score.score--card > button"
-const WAIT_TIME: number = 6000;
+const TARGET_ENDPOINT: string = "https://app.sli.do/event/znsanjvw/live/questions";
+const CLICK_SELECTOR: string = "#app > div:nth-child(2) > div > div > div > div > div > div.app__content__body > sda-live > div > sda-questions > sda-question-list > div > div:nth-child(1) > div > div > div.question-item__header.mb1 > div.question-item__action-zone > div.score.score--card > button"
+const WAIT_TIME: number = 3000;
 const VOTES_COUNT: number = 10;
 
 let counter: number = 0;
@@ -31,8 +31,6 @@ export const start = async (): Promise<void> => {
 
     await page.waitFor(WAIT_TIME);
     await page.$eval(CLICK_SELECTOR, (elem: any) => elem.click());
-
-    await browser.close()
 
     if (counter < VOTES_COUNT) {
       counter++;
